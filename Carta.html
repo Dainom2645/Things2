@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Interactiva</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffebef;
+            font-family: 'Arial', sans-serif;
+            transition: background-color 0.5s;
+        }
+        .container {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+        }
+        .sobre {
+            width: 220px;
+            height: 140px;
+            background: #ffffff;
+            position: relative;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 30px;
+            border: 2px solid #ccc;
+        }
+        .sobre::before, .sobre::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        .sobre::before {
+            top: 0;
+            left: 0;
+            border-width: 70px 110px 0 110px;
+            border-color: #e0e0e0 transparent transparent transparent;
+        }
+        .sobre::after {
+            bottom: 0;
+            left: 0;
+            border-width: 0 110px 70px 110px;
+            border-color: transparent transparent #e0e0e0 transparent;
+        }
+        .corazon-sobre {
+            color: red;
+            font-size: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .carta-completa {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 0.2;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .carta-completa.mostrar {
+            opacity: 1;
+        }
+        .btn-cerrar {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onclick="abrirCarta()">
+        <div class="sobre">
+            <div class="corazon-sobre">❤️</div>
+        </div>
+    </div>
+    <div class="carta-completa" id="cartaCompleta">
+        <p>Mi amada noviecita Nova,</p>
+        <p>Llevamos poco mas de tres meses ya pero se siente como si fuera mas tiempo, hemos pasado por varias cosas</p>
+<p> He cometido varios errores este ultimo tiempo que hablamos poco, pero hay algo que nunca va a cambiar y es cuanto te amo. </p>
+      <p>Lo siento por la calidad de el dibujo de recien, se que no es muy bueno pues es primera vez que dibujo algo pero lo hice con todo mi corazon</p>
+<p> Me tome un buen tiempo para poder hacerlo lo mejor posible aun con lo simple que es</p>
+  <p>Ya lo he dicho varias veces pero no me canso de repetirlo, y es que desde que te conoci mi perspectiva de varias cosas han cambiado para mejor</p> 
+<p> Me he estado esforzando por ser mejor persona y pareja, ya que finalmente estoy entendiendo que es amar realmente, hay tantas cosas por decirte y tantas que no se expresar. </p>
+<p>Te amo de una forma que no logro comprender y de verdad que me encantas muchisimo, quiero que seas la persona mas feliz y puedas contar siempre conmigo.</p>
+<p> Eres muy inteligente, eres muy buena con los animalitos, Comprendes muy bien los sentimientos y sabes entender a la gente, ademas de ser amable. </p>
+<p>Encima a todo eso se le suma que eres increiblemente hermosa, es que de verdad no logro encontrar algo malo, eres lo que cualquier persona soñaria. </p>
+<p>Eres increible mi amor, realmente maravillosa y la mejor persona ♡ </p>
+
+        <p>Prometo estar siempre a tu lado y acompañarte en todo momento hasta donde me lo permitas,</p>
+        <p>Con muchisimo amor, tu niño tonto pero que realmente te ama, Cristobal 💕</p>
+        <button class="btn-cerrar" onclick="cerrarCarta()">Cerrar</button>
+    </div>
+
+    <script>
+        function abrirCarta() {
+            // Abrir la carta con animación
+            document.querySelector('.sobre').style.transform = 'rotateY(180deg)';
+            // Cambiar el fondo a blanco
+            document.body.style.backgroundColor = "white";
+            // Ocultar la tarjeta de la caja
+            document.querySelector('.container').style.display = "none";
+            // Mostrar la carta completa después de un pequeño retraso
+            setTimeout(function() {
+                document.getElementById('cartaCompleta').classList.add('mostrar');
+            }, 500); // Esperar que la carta gire antes de mostrar el mensaje
+        }
+
+        function cerrarCarta() {
+            // Cerrar la carta
+            document.body.style.backgroundColor = "#ffebef";
+            document.querySelector('.container').style.display = "block";
+            document.querySelector('.sobre').style.transform = 'rotateY(0deg)';
+            // Ocultar el mensaje
+            document.getElementById('cartaCompleta').classList.remove('mostrar');
+        }
+    </script>
+</body>
+</html>
