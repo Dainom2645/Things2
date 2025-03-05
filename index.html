@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Carta Interactiva</title>
     <style>
         body {
@@ -13,6 +13,8 @@
             background-color: #ffebef;
             font-family: 'Arial', sans-serif;
             transition: background-color 0.5s;
+            margin: 0;
+            overflow: hidden;
         }
         .container {
             position: relative;
@@ -32,6 +34,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             font-size: 30px;
             border: 2px solid #ccc;
+            margin: 10px;
         }
         .sobre::before, .sobre::after {
             content: '';
@@ -63,20 +66,21 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 100vw; /* Aseguramos que ocupe toda la pantalla */
+            height: 100vh; /* Aseguramos que ocupe toda la pantalla */
             background: white;
             color: black;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* Alineación al principio */
             padding: 20px;
             text-align: center;
             font-size: 20px;
-            line-height: 0.2;
+            line-height: 1.6;
             flex-direction: column;
             opacity: 0;
             transition: opacity 1s ease;
+            overflow-y: auto; /* Permite desplazamiento si el contenido es grande */
         }
         .carta-completa.mostrar {
             opacity: 1;
@@ -91,6 +95,27 @@
             font-size: 16px;
             border-radius: 5px;
         }
+
+        /* Estilos responsivos para pantallas pequeñas */
+        @media (max-width: 600px) {
+            .sobre {
+                width: 180px;
+                height: 120px;
+                font-size: 25px;
+            }
+            .corazon-sobre {
+                font-size: 30px;
+            }
+            .carta-completa {
+                padding: 15px;
+                font-size: 18px;
+                max-height: 90vh; /* Permite que la carta se ajuste más en móviles */
+            }
+            .btn-cerrar {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -101,17 +126,16 @@
     </div>
     <div class="carta-completa" id="cartaCompleta">
         <p>Mi amada noviecita Nova,</p>
-        <p>Llevamos poco mas de tres meses ya pero se siente como si fuera mas tiempo, hemos pasado por varias cosas</p>
-<p> He cometido varios errores este ultimo tiempo que hablamos poco, pero hay algo que nunca va a cambiar y es cuanto te amo. </p>
-      <p>Lo siento por la calidad de el dibujo de recien, se que no es muy bueno pues es primera vez que dibujo algo pero lo hice con todo mi corazon</p>
-<p> Me tome un buen tiempo para poder hacerlo lo mejor posible aun con lo simple que es</p>
-  <p>Ya lo he dicho varias veces pero no me canso de repetirlo, y es que desde que te conoci mi perspectiva de varias cosas han cambiado para mejor</p> 
-<p> Me he estado esforzando por ser mejor persona y pareja, ya que finalmente estoy entendiendo que es amar realmente, hay tantas cosas por decirte y tantas que no se expresar. </p>
-<p>Te amo de una forma que no logro comprender y de verdad que me encantas muchisimo, quiero que seas la persona mas feliz y puedas contar siempre conmigo.</p>
-<p> Eres muy inteligente, eres muy buena con los animalitos, Comprendes muy bien los sentimientos y sabes entender a la gente, ademas de ser amable. </p>
-<p>Encima a todo eso se le suma que eres increiblemente hermosa, es que de verdad no logro encontrar algo malo, eres lo que cualquier persona soñaria. </p>
-<p>Eres increible mi amor, realmente maravillosa y la mejor persona ♡ </p>
-
+        <p>Llevamos poco mas de tres meses ya pero se siente como si fuera mas tiempo, hemos pasado por varias cosas.</p>
+        <p>He cometido varios errores este ultimo tiempo que hablamos poco, pero hay algo que nunca va a cambiar y es cuanto te amo.</p>
+        <p>Lo siento por la calidad de el dibujo de recien, se que no es muy bueno pues es primera vez que dibujo algo pero lo hice con todo mi corazon.</p>
+        <p>Me tome un buen tiempo para poder hacerlo lo mejor posible aun con lo simple que es.</p>
+        <p>Ya lo he dicho varias veces pero no me canso de repetirlo, y es que desde que te conoci mi perspectiva de varias cosas han cambiado para mejor.</p>
+        <p>Me he estado esforzando por ser mejor persona y pareja, ya que finalmente estoy entendiendo que es amar realmente, hay tantas cosas por decirte y tantas que no se expresar.</p>
+        <p>Te amo de una forma que no logro comprender y de verdad que me encantas muchisimo, quiero que seas la persona mas feliz y puedas contar siempre conmigo.</p>
+        <p>Eres muy inteligente, eres muy buena con los animalitos, Comprendes muy bien los sentimientos y sabes entender a la gente, ademas de ser amable.</p>
+        <p>Encima a todo eso se le suma que eres increiblemente hermosa, es que de verdad no logro encontrar algo malo, eres lo que cualquier persona soñaria.</p>
+        <p>Eres increible mi amor, realmente maravillosa y la mejor persona ♡</p>
         <p>Prometo estar siempre a tu lado y acompañarte en todo momento hasta donde me lo permitas,</p>
         <p>Con muchisimo amor, tu niño tonto pero que realmente te ama, Cristobal 💕</p>
         <button class="btn-cerrar" onclick="cerrarCarta()">Cerrar</button>
